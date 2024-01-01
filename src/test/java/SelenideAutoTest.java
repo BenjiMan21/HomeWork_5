@@ -2,6 +2,8 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selectors.byText;
 
@@ -16,7 +18,8 @@ public class SelenideAutoTest {
     void selenideHomework (){
         open("https://github.com/selenide/selenide");
         $$("ul.UnderlineNav-body li").get(5).click();
-        $(".markdown-body").$(byText("Soft assertions")).click();
+        $("#wiki-pages-filter").setValue("SoftAssertions");
+        $("#wiki-pages-box").$(byText("SoftAssertions")).click();
 
         $(".markdown-body").$(byText("@ExtendWith({SoftAssertsExtension.class})\n" +
                 "class Tests {\n" +
